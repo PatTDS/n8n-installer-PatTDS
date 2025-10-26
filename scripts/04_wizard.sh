@@ -54,6 +54,7 @@ base_services_data=(
     "comfyui" "ComfyUI (Node-based Stable Diffusion UI)"
     "crawl4ai" "Crawl4ai (Web Crawler for AI)"
     "dify" "Dify (AI Application Development Platform with LLMOps)"
+    "docmost" "Docmost (Open-source Notion Alternative)"
     "flowise" "Flowise (AI Agent Builder)"
     "gotenberg" "Gotenberg (Document Conversion API)"
     "langfuse" "Langfuse Suite (AI Observability - includes Clickhouse, Minio)"

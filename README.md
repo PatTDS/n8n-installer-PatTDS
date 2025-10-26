@@ -32,6 +32,8 @@ The installer also makes the following powerful open-source tools **available fo
 
 ✅ [**Dify**](https://dify.ai/) - An open-source AI application development platform that provides comprehensive LLMOps capabilities, including workflow management, prompt engineering, RAG pipelines, and AI agent orchestration. Perfect for building production-ready AI applications.
 
+✅ [**Docmost**](https://docmost.com/) - An open-source alternative to Notion and Confluence. A modern, collaborative wiki and documentation platform with real-time editing, markdown support, and powerful organization features.
+
 ✅ [**Flowise**](https://flowiseai.com/) - A no-code/low-code AI agent builder that complements n8n perfectly, allowing you to create sophisticated AI applications with ease.
 
 ✅ [**Gotenberg**](https://gotenberg.dev/) - A stateless API for converting HTML, Markdown, Word, Excel, and other documents to PDF, PNG, or JPEG. Available only within the Docker network for internal use by n8n workflows and other services.
@@ -138,6 +140,7 @@ After successful installation, your services are up and running! Here's how to g
     - **n8n:** `n8n.yourdomain.com` (Log in with the email address you provided during installation and the initial password from the summary report. You may be prompted to change this password on first login.)
     - **ComfyUI:** `comfyui.yourdomain.com` (Node-based Stable Diffusion UI)
     - **Dify:** `dify.yourdomain.com` (AI application development platform with comprehensive LLMOps capabilities)
+    - **Docmost:** `docmost.yourdomain.com` (Open-source Notion alternative - create workspace on first visit)
     - **Flowise:** `flowise.yourdomain.com` (Log in with the email address you provided during installation and the initial password from the summary report.)
     - **Grafana:** `grafana.yourdomain.com`
     - **Langfuse:** `langfuse.yourdomain.com`

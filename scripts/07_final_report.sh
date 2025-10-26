@@ -82,6 +82,19 @@ if is_profile_active "dify"; then
   echo "  - Internal API: http://dify-api:5001"
 fi
 
+if is_profile_active "docmost"; then
+  echo
+  echo "================================= Docmost ============================="
+  echo
+  echo "Host: ${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Open-source Notion Alternative"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Start collaborating with real-time editing"
+fi
+
 if is_profile_active "supabase"; then
   echo
   echo "================================= Supabase ============================"

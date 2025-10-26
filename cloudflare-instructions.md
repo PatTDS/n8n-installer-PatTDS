@@ -38,6 +38,7 @@ In the tunnel configuration, you need to create a public hostname for **each ser
 | **n8n** | n8n.yourdomain.com | `http://n8n:5678` | Workflow automation |
 | **Flowise** | flowise.yourdomain.com | `http://flowise:3001` | LangChain UI |
 | **Dify** | dify.yourdomain.com | `http://nginx:80` | AI application platform |
+| **Docmost** | docmost.yourdomain.com | `http://docmost:3000` | Notion alternative |
 | **Open WebUI** | webui.yourdomain.com | `http://open-webui:8080` | Chat interface |
 | **Langfuse** | langfuse.yourdomain.com | `http://langfuse-web:3000` | LLM observability |
 | **Supabase** | supabase.yourdomain.com | `http://kong:8000` | Backend as a Service |

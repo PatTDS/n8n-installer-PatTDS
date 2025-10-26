@@ -58,6 +58,8 @@ declare -A VARS_TO_GENERATE=(
     # WAHA (WhatsApp HTTP API)
     ["WAHA_DASHBOARD_PASSWORD"]="password:32"
     ["WHATSAPP_SWAGGER_PASSWORD"]="password:32"
+    # Docmost (Notion alternative)
+    ["DOCMOST_APP_SECRET"]="hex:64" # 32 bytes -> 64 hex chars
 )
 
 # Initialize existing_env_vars and attempt to read .env if it exists
