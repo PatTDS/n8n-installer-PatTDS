@@ -58,6 +58,11 @@
     reverse_proxy waha:3000
 }
 
+# Docmost
+{$DOCMOST_HOSTNAME} {
+    reverse_proxy docmost:3000
+}
+
 # Prometheus
 {$PROMETHEUS_HOSTNAME} {
     basic_auth { 

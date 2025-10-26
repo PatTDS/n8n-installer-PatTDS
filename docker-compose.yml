@@ -2,6 +2,7 @@ volumes:
   caddy-config:
   caddy-data:
   comfyui_data:
+  docmost_data:
   flowise:
   grafana:
   langfuse_clickhouse_data:
@@ -223,6 +224,7 @@ services:
       - COMFYUI_PASSWORD_HASH=${COMFYUI_PASSWORD_HASH}
       - COMFYUI_USERNAME=${COMFYUI_USERNAME}
       - DIFY_HOSTNAME=${DIFY_HOSTNAME}
+      - DOCMOST_HOSTNAME=${DOCMOST_HOSTNAME}
       - FLOWISE_HOSTNAME=${FLOWISE_HOSTNAME}
       - GRAFANA_HOSTNAME=${GRAFANA_HOSTNAME}
       - LANGFUSE_HOSTNAME=${LANGFUSE_HOSTNAME}
@@ -244,7 +246,7 @@ services:
       - PROMETHEUS_PASSWORD_HASH=${PROMETHEUS_PASSWORD_HASH}
       - PROMETHEUS_USERNAME=${PROMETHEUS_USERNAME}
       - QDRANT_HOSTNAME=${QDRANT_HOSTNAME}
-      - RAGAPP_HOSTNAME=${RAGAPP_HOSTNAME}
+      - RAGAPP_HOSTNAME=${RAGAPP_PASSWORD_HASH}
       - RAGAPP_PASSWORD_HASH=${RAGAPP_PASSWORD_HASH}
       - RAGAPP_USERNAME=${RAGAPP_USERNAME}
       - SEARXNG_HOSTNAME=${SEARXNG_HOSTNAME}
@@ -805,4 +807,22 @@ services:
       redis:
         condition: service_healthy
       postgres:
+        condition: service_healthy
+
+  docmost:
+    image: docmost/docmost:latest
+    container_name: docmost
+    profiles: ["docmost"]
+    restart: unless-stopped
+    environment:
+      APP_URL: ${DOCMOST_HOSTNAME:+https://}${DOCMOST_HOSTNAME}
+      APP_SECRET: ${DOCMOST_APP_SECRET}
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/docmost
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - docmost_data:/app/data/storage
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
         condition: service_healthy
