@@ -35,6 +35,18 @@ The installer also makes the following powerful open-source tools **available fo
 ✅ [**Docmost**](https://docmost.com/) - An open-source alternative to Notion and Confluence. A modern, collaborative wiki and documentation platform with real-time editing, markdown support, and powerful organization features.
 ✅ [**Outline**](https://www.getoutline.com/) - Team wiki and knowledge base. Modern documentation platform with real-time collaboration, integrations, and powerful search.
 
+✅ [**Authentik**](https://goauthentik.io/) - Open-source Identity and Access Management solution. Provides Single Sign-On (SSO) via OAuth2/OIDC for all your services, user management, 2FA/MFA, and fine-grained access control. Essential for enterprise deployments.
+
+✅ [**Uptime Kuma**](https://github.com/louislam/uptime-kuma) - Self-hosted uptime monitoring tool with a beautiful UI. Monitor HTTP(s), TCP, Ping, DNS, and more. Create status pages and receive alerts via Discord, Slack, email, and 90+ notification services.
+
+✅ [**Metabase**](https://www.metabase.com/) - Open-source Business Intelligence platform. Query your PostgreSQL databases visually, create interactive dashboards, and share insights with your team. Perfect for analyzing n8n workflow data, Langfuse metrics, and application logs.
+
+✅ [**Plausible Analytics**](https://plausible.io/) - Privacy-focused, GDPR-compliant web analytics. Lightweight alternative to Google Analytics with no cookies, no tracking scripts, and beautiful insights. Self-hosted for complete data ownership.
+
+✅ [**Roundcube**](https://roundcube.net/) - Modern webmail client with a desktop-like interface. Connect to your IMAP/SMTP servers to manage emails directly from your browser. Useful for testing n8n email workflows and managing service notifications.
+
+✅ [**FreshRSS**](https://freshrss.org/) - Self-hosted RSS feed aggregator. Monitor blogs, news sites, and content sources in one place. Trigger n8n workflows based on new content, track competitors, or aggregate industry updates.
+
 ✅ [**Flowise**](https://flowiseai.com/) - A no-code/low-code AI agent builder that complements n8n perfectly, allowing you to create sophisticated AI applications with ease.
 
 ✅ [**Gotenberg**](https://gotenberg.dev/) - A stateless API for converting HTML, Markdown, Word, Excel, and other documents to PDF, PNG, or JPEG. Available only within the Docker network for internal use by n8n workflows and other services.
@@ -142,7 +154,13 @@ After successful installation, your services are up and running! Here's how to g
     - **ComfyUI:** `comfyui.yourdomain.com` (Node-based Stable Diffusion UI)
     - **Dify:** `dify.yourdomain.com` (AI application development platform with comprehensive LLMOps capabilities)
     - **Docmost:** `docmost.yourdomain.com` (Open-source Notion alternative - create workspace on first visit)
-- **Outline:** `outline.yourdomain.com` (Team wiki and knowledge base - create workspace on first visit)
+    - **Outline:** `outline.yourdomain.com` (Team wiki and knowledge base - create workspace on first visit)
+    - **Authentik:** `authentik.yourdomain.com` (SSO provider - use bootstrap password from .env)
+    - **Uptime Kuma:** `uptime.yourdomain.com` (Uptime monitoring - create admin account on first visit)
+    - **Metabase:** `metabase.yourdomain.com` (Business Intelligence - create admin account on first visit)
+    - **Plausible:** `plausible.yourdomain.com` (Privacy-focused analytics - register on first visit)
+    - **Roundcube:** `mail.yourdomain.com` (Webmail - login with email credentials)
+    - **FreshRSS:** `rss.yourdomain.com` (RSS aggregator - complete setup wizard)
     - **Flowise:** `flowise.yourdomain.com` (Log in with the email address you provided during installation and the initial password from the summary report.)
     - **Grafana:** `grafana.yourdomain.com`
     - **Langfuse:** `langfuse.yourdomain.com`

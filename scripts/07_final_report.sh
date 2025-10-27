@@ -279,6 +279,86 @@ if is_profile_active "outline"; then
   echo "  - Configure authentication provider (Google, Slack, etc.)"
 fi
 
+if is_profile_active "authentik"; then
+  echo
+  echo "================================= Authentik ============================"
+  echo
+  echo "Host: ${AUTHENTIK_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Identity & Access Management - SSO Provider"
+  echo "Bootstrap Password: ${AUTHENTIK_BOOTSTRAP_PASSWORD:-<check_.env>}"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${AUTHENTIK_HOSTNAME:-<hostname_not_set>}/if/flow/initial-setup/"
+  echo "  - Use bootstrap password to create admin account"
+  echo "  - Configure SSO for n8n, Outline, Grafana, etc."
+fi
+
+if is_profile_active "uptime-kuma"; then
+  echo
+  echo "================================= Uptime Kuma ========================="
+  echo
+  echo "Host: ${UPTIMEKUMA_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Uptime Monitoring & Status Page"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${UPTIMEKUMA_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create admin account on first visit"
+  echo "  - Add monitoring for all services"
+fi
+
+if is_profile_active "metabase"; then
+  echo
+  echo "================================= Metabase ============================"
+  echo
+  echo "Host: ${METABASE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Business Intelligence Platform"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${METABASE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create admin account"
+  echo "  - Connect to PostgreSQL databases for analytics"
+fi
+
+if is_profile_active "plausible"; then
+  echo
+  echo "================================= Plausible ==========================="
+  echo
+  echo "Host: ${PLAUSIBLE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Privacy-focused Web Analytics"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${PLAUSIBLE_HOSTNAME:-<hostname_not_set>}/register"
+  echo "  - Create admin account"
+  echo "  - Add tracking script to websites"
+fi
+
+if is_profile_active "roundcube"; then
+  echo
+  echo "================================= Roundcube ==========================="
+  echo
+  echo "Host: ${ROUNDCUBE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Webmail Client"
+  echo "IMAP: ${ROUNDCUBE_IMAP_HOST:-<configure_in_.env>}"
+  echo "SMTP: ${ROUNDCUBE_SMTP_HOST:-<configure_in_.env>}"
+  echo
+  echo "Setup:"
+  echo "  - Visit https://${ROUNDCUBE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Login with your email credentials"
+fi
+
+if is_profile_active "freshrss"; then
+  echo
+  echo "================================= FreshRSS ============================"
+  echo
+  echo "Host: ${FRESHRSS_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: RSS Feed Aggregator"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${FRESHRSS_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Complete installation wizard"
+  echo "  - Add RSS feeds to monitor"
+fi
+
 if is_profile_active "paddleocr"; then
   echo
   echo "================================= PaddleOCR ==========================="

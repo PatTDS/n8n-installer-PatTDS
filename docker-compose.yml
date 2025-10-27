@@ -1,5 +1,12 @@
 volumes:
+  authentik_data:
+  freshrss_data:
+  metabase_data:
   outline_data:
+  plausible_db:
+  plausible_event_data:
+  roundcube_data:
+  uptime_kuma_data:
   caddy-config:
   caddy-data:
   comfyui_data:
@@ -257,6 +264,12 @@ services:
       - SUPABASE_HOSTNAME=${SUPABASE_HOSTNAME}
       - WEAVIATE_HOSTNAME=${WEAVIATE_HOSTNAME}
       - WEBUI_HOSTNAME=${WEBUI_HOSTNAME}
+      - AUTHENTIK_HOSTNAME=${AUTHENTIK_HOSTNAME}
+      - UPTIMEKUMA_HOSTNAME=${UPTIMEKUMA_HOSTNAME}
+      - METABASE_HOSTNAME=${METABASE_HOSTNAME}
+      - PLAUSIBLE_HOSTNAME=${PLAUSIBLE_HOSTNAME}
+      - ROUNDCUBE_HOSTNAME=${ROUNDCUBE_HOSTNAME}
+      - FRESHRSS_HOSTNAME=${FRESHRSS_HOSTNAME}
     cap_drop:
       - ALL
     cap_add:
@@ -851,3 +864,106 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+
+  # Authentik - Identity & Access Management
+  authentik:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: authentik
+    profiles: ["authentik"]
+    restart: unless-stopped
+    command: server
+    environment:
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_BOOTSTRAP_PASSWORD: ${AUTHENTIK_BOOTSTRAP_PASSWORD}
+      AUTHENTIK_BOOTSTRAP_TOKEN: ${AUTHENTIK_BOOTSTRAP_TOKEN}
+      AUTHENTIK_POSTGRESQL__HOST: postgres
+      AUTHENTIK_POSTGRESQL__NAME: authentik
+      AUTHENTIK_POSTGRESQL__USER: postgres
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${POSTGRES_PASSWORD}
+      AUTHENTIK_REDIS__HOST: redis
+    volumes:
+      - authentik_data:/media
+      - authentik_data:/certs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # Uptime Kuma - Uptime Monitoring
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: uptime-kuma
+    profiles: ["uptime-kuma"]
+    restart: unless-stopped
+    volumes:
+      - uptime_kuma_data:/app/data
+
+  # Metabase - Business Intelligence
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+    profiles: ["metabase"]
+    restart: unless-stopped
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: postgres
+      MB_DB_PASS: ${POSTGRES_PASSWORD}
+      MB_DB_HOST: postgres
+    volumes:
+      - metabase_data:/metabase-data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Plausible Analytics - Privacy-focused Analytics
+  plausible:
+    image: plausible/analytics:latest
+    container_name: plausible
+    profiles: ["plausible"]
+    restart: unless-stopped
+    command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh run"
+    environment:
+      BASE_URL: ${PLAUSIBLE_HOSTNAME:+https://}${PLAUSIBLE_HOSTNAME}
+      SECRET_KEY_BASE: ${PLAUSIBLE_SECRET_KEY}
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/plausible
+      CLICKHOUSE_DATABASE_URL: http://clickhouse:8123/plausible
+    depends_on:
+      postgres:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
+
+  # Roundcube - Webmail
+  roundcube:
+    image: roundcube/roundcubemail:latest
+    container_name: roundcube
+    profiles: ["roundcube"]
+    restart: unless-stopped
+    environment:
+      ROUNDCUBEMAIL_DB_TYPE: pgsql
+      ROUNDCUBEMAIL_DB_HOST: postgres
+      ROUNDCUBEMAIL_DB_NAME: roundcube
+      ROUNDCUBEMAIL_DB_USER: postgres
+      ROUNDCUBEMAIL_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      ROUNDCUBEMAIL_DEFAULT_HOST: ${ROUNDCUBE_IMAP_HOST:-localhost}
+      ROUNDCUBEMAIL_SMTP_SERVER: ${ROUNDCUBE_SMTP_HOST:-localhost}
+    volumes:
+      - roundcube_data:/var/www/html
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # FreshRSS - RSS Aggregator
+  freshrss:
+    image: freshrss/freshrss:latest
+    container_name: freshrss
+    profiles: ["freshrss"]
+    restart: unless-stopped
+    environment:
+      CRON_MIN: '*/15'
+      TZ: UTC
+    volumes:
+      - freshrss_data:/var/www/FreshRSS/data

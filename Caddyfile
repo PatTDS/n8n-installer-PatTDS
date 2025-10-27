@@ -206,3 +206,33 @@ import /etc/caddy/addons/*.conf
 {$OUTLINE_HOSTNAME} {
     reverse_proxy outline:3000
 }
+
+# Authentik
+{$AUTHENTIK_HOSTNAME} {
+    reverse_proxy authentik:9000
+}
+
+# Uptime Kuma
+{$UPTIMEKUMA_HOSTNAME} {
+    reverse_proxy uptime-kuma:3001
+}
+
+# Metabase
+{$METABASE_HOSTNAME} {
+    reverse_proxy metabase:3000
+}
+
+# Plausible
+{$PLAUSIBLE_HOSTNAME} {
+    reverse_proxy plausible:8000
+}
+
+# Roundcube
+{$ROUNDCUBE_HOSTNAME} {
+    reverse_proxy roundcube:80
+}
+
+# FreshRSS
+{$FRESHRSS_HOSTNAME} {
+    reverse_proxy freshrss:80
+}

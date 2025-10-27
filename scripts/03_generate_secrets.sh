@@ -61,6 +61,12 @@ declare -A VARS_TO_GENERATE=(
     # Docmost (Notion alternative)
     ["DOCMOST_APP_SECRET"]="hex:64" # 32 bytes -> 64 hex chars
     ["OUTLINE_APP_SECRET"]="hex:64"
+    # Authentik (Identity & Access Management)
+    ["AUTHENTIK_SECRET_KEY"]="hex:64"
+    ["AUTHENTIK_BOOTSTRAP_PASSWORD"]="password:32"
+    ["AUTHENTIK_BOOTSTRAP_TOKEN"]="hex:32"
+    # Plausible (Analytics)
+    ["PLAUSIBLE_SECRET_KEY"]="hex:64"
 )
 
 # Initialize existing_env_vars and attempt to read .env if it exists
