@@ -201,3 +201,8 @@ import /etc/caddy/addons/*.conf
         header_up Connection "close"
     }
 }
+
+# Installation
+{OUTLINE_HOSTNAME} {
+    reverse_proxy outline:3000
+}

@@ -83,16 +83,172 @@ if is_profile_active "dify"; then
 fi
 
 if is_profile_active "docmost"; then
+
+if is_profile_active "outline"; then
   echo
-  echo "================================= Docmost ============================="
+  echo "================================= Outline ============================"
   echo
-  echo "Host: ${DOCMOST_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Open-source Notion Alternative"
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
   echo
   echo "First Time Setup:"
-  echo "  - Visit https://${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
   echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo "================================= Docmost ============================="
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo "Host: ${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo "Description: Open-source Notion Alternative"
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo "First Time Setup:"
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo "  - Visit https://${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+  echo "  - Create your workspace and admin account"
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
   echo "  - Start collaborating with real-time editing"
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
+fi
+fi
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
 fi
 
 if is_profile_active "supabase"; then
