@@ -228,7 +228,8 @@ class ServiceIntegrator:
         description = input(f"Description [{desc_preview}{'...' if len(default_desc) > 50 else ''}]: ") or default_desc
 
         # Port
-        default_port = self.analysis.get('ports', [None])[0] or '3000'
+        ports_list = self.analysis.get('ports', [])
+        default_port = ports_list[0] if ports_list else '3000'
         port = input(f"Internal port [{default_port}]: ") or default_port
 
         # Image
