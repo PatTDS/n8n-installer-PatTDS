@@ -260,7 +260,7 @@ class ServiceIntegrator:
 
     def add_to_docker_compose(self):
         """Add service to docker-compose.yml"""
-        print(f"{Colors.BLUE}[1/6] Updating docker-compose.yml...{Colors.NC}")
+        print(f"{Colors.BLUE}[1/7] Updating docker-compose.yml...{Colors.NC}")
 
         docker_compose = self.project_root / 'docker-compose.yml'
 
@@ -308,7 +308,7 @@ class ServiceIntegrator:
 
     def add_to_env_example(self):
         """Add to .env.example"""
-        print(f"{Colors.BLUE}[2/6] Updating .env.example...{Colors.NC}")
+        print(f"{Colors.BLUE}[2/7] Updating .env.example...{Colors.NC}")
 
         env_example = self.project_root / '.env.example'
 
@@ -329,7 +329,7 @@ class ServiceIntegrator:
 
     def add_to_caddyfile(self):
         """Add to Caddyfile"""
-        print(f"{Colors.BLUE}[3/6] Updating Caddyfile...{Colors.NC}")
+        print(f"{Colors.BLUE}[3/7] Updating Caddyfile...{Colors.NC}")
 
         caddyfile = self.project_root / 'Caddyfile'
 
@@ -345,6 +345,151 @@ class ServiceIntegrator:
 
         print(f"{Colors.GREEN}✓ Added to Caddyfile{Colors.NC}")
 
+    def add_to_wizard(self):
+        """Add to installation wizard"""
+        print(f"{Colors.BLUE}[4/7] Updating wizard (04_wizard.sh)...{Colors.NC}")
+
+        wizard_file = self.project_root / 'scripts' / '04_wizard.sh'
+
+        with open(wizard_file, 'r') as f:
+            content = f.read()
+
+        # Find where to add (after outline or docmost)
+        service_line = f'    "{self.service_config["name"]}" "{self.service_config["display_name"]}"\n'
+
+        # Add after outline if it exists, otherwise after docmost
+        if '"outline"' in content:
+            content = re.sub(
+                r'("outline" ".*?")\n',
+                f'\\1\n{service_line}',
+                content,
+                count=1
+            )
+        elif '"docmost"' in content:
+            content = re.sub(
+                r'("docmost" ".*?")\n',
+                f'\\1\n{service_line}',
+                content,
+                count=1
+            )
+        else:
+            # Fallback: add before closing parenthesis of base_services_data
+            content = re.sub(
+                r'(\nbase_services_data=\([^)]+)',
+                f'\\1\n{service_line}',
+                content,
+                count=1
+            )
+
+        with open(wizard_file, 'w') as f:
+            f.write(content)
+
+        print(f"{Colors.GREEN}✓ Added to wizard{Colors.NC}")
+
+    def add_to_secrets(self):
+        """Add to secrets generation"""
+        print(f"{Colors.BLUE}[5/7] Updating secrets (03_generate_secrets.sh)...{Colors.NC}")
+
+        secrets_file = self.project_root / 'scripts' / '03_generate_secrets.sh'
+
+        with open(secrets_file, 'r') as f:
+            content = f.read()
+
+        secret_line = f'    ["{self.service_config["name"].upper()}_APP_SECRET"]="hex:64"\n'
+
+        # Add after OUTLINE_APP_SECRET or DOCMOST_APP_SECRET
+        if 'OUTLINE_APP_SECRET' in content:
+            content = re.sub(
+                r'(\["OUTLINE_APP_SECRET"\]="hex:64")\n',
+                f'\\1\n{secret_line}',
+                content,
+                count=1
+            )
+        elif 'DOCMOST_APP_SECRET' in content:
+            content = re.sub(
+                r'(\["DOCMOST_APP_SECRET"\]="hex:64")\n',
+                f'\\1\n{secret_line}',
+                content,
+                count=1
+            )
+        else:
+            # Fallback: add before closing parenthesis
+            content = re.sub(
+                r'(\n\))',
+                f'{secret_line}\\1',
+                content,
+                count=1
+            )
+
+        with open(secrets_file, 'w') as f:
+            f.write(content)
+
+        print(f"{Colors.GREEN}✓ Added to secrets{Colors.NC}")
+
+    def add_to_final_report(self):
+        """Add to final installation report"""
+        print(f"{Colors.BLUE}[6/7] Updating final report (07_final_report.sh)...{Colors.NC}")
+
+        report_file = self.project_root / 'scripts' / '07_final_report.sh'
+
+        report_block = f'''
+if is_profile_active "{self.service_config['name']}"; then
+  echo
+  echo "================================= {self.service_config['display_name']} ============================"
+  echo
+  echo "Host: ${{{self.service_config['name'].upper()}_HOSTNAME:-<hostname_not_set>}}"
+  echo "Description: {self.service_config['description']}"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${{{self.service_config['name'].upper()}_HOSTNAME:-<hostname_not_set>}}"
+  echo "  - Create your admin account"
+fi
+'''
+
+        with open(report_file, 'r') as f:
+            content = f.read()
+
+        # Add after outline section if it exists
+        if 'is_profile_active "outline"' in content:
+            # Find the outline block and add after it
+            content = re.sub(
+                r'(if is_profile_active "outline"; then.*?^fi)',
+                f'\\1\n{report_block}',
+                content,
+                count=1,
+                flags=re.MULTILINE | re.DOTALL
+            )
+        elif 'is_profile_active "docmost"' in content:
+            # Find the docmost block and add after it
+            content = re.sub(
+                r'(if is_profile_active "docmost"; then.*?^fi)',
+                f'\\1\n{report_block}',
+                content,
+                count=1,
+                flags=re.MULTILINE | re.DOTALL
+            )
+        else:
+            # Fallback: add before paddleocr or python-runner
+            if 'is_profile_active "paddleocr"' in content:
+                content = re.sub(
+                    r'(if is_profile_active "paddleocr")',
+                    f'{report_block}\n\\1',
+                    content,
+                    count=1
+                )
+            elif 'is_profile_active "python-runner"' in content:
+                content = re.sub(
+                    r'(if is_profile_active "python-runner")',
+                    f'{report_block}\n\\1',
+                    content,
+                    count=1
+                )
+
+        with open(report_file, 'w') as f:
+            f.write(content)
+
+        print(f"{Colors.GREEN}✓ Added to final report{Colors.NC}")
+
     def integrate(self):
         """Run full integration"""
         print(f"\n{Colors.YELLOW}Integrating into n8n-installer...{Colors.NC}\n")
@@ -352,6 +497,12 @@ class ServiceIntegrator:
         self.add_to_docker_compose()
         self.add_to_env_example()
         self.add_to_caddyfile()
+        self.add_to_wizard()
+        self.add_to_secrets()
+        self.add_to_final_report()
+
+        print(f"\n{Colors.BLUE}[7/7] Updating README.md...{Colors.NC}")
+        print(f"{Colors.YELLOW}⚠ Manual step required: Add {self.service_config['display_name']} to README.md{Colors.NC}")
 
         print(f"\n{Colors.GREEN}========================================{Colors.NC}")
         print(f"{Colors.GREEN}✓ Integration Complete!{Colors.NC}")
@@ -359,12 +510,9 @@ class ServiceIntegrator:
 
         print(f"{Colors.YELLOW}Next Steps:{Colors.NC}")
         print("1. Review changes: git diff")
-        print(f"2. Add to wizard: scripts/04_wizard.sh")
-        print(f"3. Add to secrets: scripts/03_generate_secrets.sh")
-        print(f"4. Add to report: scripts/07_final_report.sh")
-        print(f"5. Update README.md")
-        print(f"6. Commit: git commit -am 'Add {self.service_config['display_name']} service'")
-        print(f"7. Push: git push origin main\n")
+        print(f"2. Update README.md (manual)")
+        print(f"3. Commit: git commit -am 'Add {self.service_config['display_name']} service'")
+        print(f"4. Push: git push origin main\n")
 
         print(f"{Colors.BLUE}Test with: docker compose --profile {self.service_config['name']} up -d{Colors.NC}\n")
 
