@@ -229,6 +229,28 @@ This setup pre-installs useful Node.js libraries for use in n8n's Code nodes, al
 - **`moment`**: For parsing, validating, manipulating, and displaying dates/times.
 - **`lodash`**: A utility library for common programming tasks (arrays, objects, strings, etc.).
 
+## Installing n8n Community Nodes (Optional)
+
+By default, n8n community nodes are **NOT installed** during setup to ensure fast deployment. n8n starts immediately and is fully functional.
+
+**To install community nodes after setup:**
+
+```bash
+cd ~/n8n-installer
+docker compose --profile n8n-import up
+```
+
+This runs once and installs all community packages defined in `shared/community-nodes.txt`. After completion, restart n8n:
+
+```bash
+docker compose restart n8n
+```
+
+**Why this approach?**
+- Fresh installations complete in seconds instead of 10+ minutes
+- Prevents VPS crashes during resource-intensive package installation
+- Community nodes can be installed selectively when needed
+
 ## Upgrading
 
 To update all components (n8n, Open WebUI, etc.) to their latest versions and incorporate the newest changes from this installer project, use the update script from the project root:

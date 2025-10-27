@@ -51,6 +51,9 @@ if is_profile_active "n8n"; then
   echo "================================= n8n ================================="
   echo
   echo "Host: ${N8N_HOSTNAME:-<hostname_not_set>}"
+  echo
+  echo "Note: Community nodes NOT installed by default for faster setup."
+  echo "To install community nodes: docker compose --profile n8n-import up"
 fi
 
 if is_profile_active "open-webui"; then

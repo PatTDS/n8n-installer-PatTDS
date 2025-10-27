@@ -132,7 +132,7 @@ services:
   n8n-import:
     <<: *service-n8n
     container_name: n8n-import
-    profiles: ["n8n"]
+    profiles: ["n8n-import"]
     environment:
       <<: *service-n8n-env
       RUN_N8N_IMPORT: ${RUN_N8N_IMPORT:-false}
@@ -155,8 +155,10 @@ services:
       - ./n8n/backup:/backup
       - ./shared:/data/shared
     depends_on:
-      n8n-import:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
   n8n-worker:
     <<: *service-n8n
