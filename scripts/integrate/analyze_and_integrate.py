@@ -331,7 +331,7 @@ class ServiceIntegrator:
         """Add to Caddyfile"""
         print(f"{Colors.BLUE}[3/7] Updating Caddyfile...{Colors.NC}")
 
-        caddyfile = self.project_root / 'Caddyfile'
+        caddyfile = self.project_root / 'config' / 'caddy' / 'Caddyfile'
 
         caddy_block = f"""
 # {self.service_config['display_name']}
@@ -349,7 +349,7 @@ class ServiceIntegrator:
         """Add to installation wizard"""
         print(f"{Colors.BLUE}[4/7] Updating wizard (04_wizard.sh)...{Colors.NC}")
 
-        wizard_file = self.project_root / 'scripts' / '04_wizard.sh'
+        wizard_file = self.project_root / 'scripts' / 'install' / '04_wizard.sh'
 
         with open(wizard_file, 'r') as f:
             content = f.read()
@@ -390,7 +390,7 @@ class ServiceIntegrator:
         """Add to secrets generation"""
         print(f"{Colors.BLUE}[5/7] Updating secrets (03_generate_secrets.sh)...{Colors.NC}")
 
-        secrets_file = self.project_root / 'scripts' / '03_generate_secrets.sh'
+        secrets_file = self.project_root / 'scripts' / 'install' / '03_generate_secrets.sh'
 
         with open(secrets_file, 'r') as f:
             content = f.read()
@@ -430,7 +430,7 @@ class ServiceIntegrator:
         """Add to final installation report"""
         print(f"{Colors.BLUE}[6/7] Updating final report (07_final_report.sh)...{Colors.NC}")
 
-        report_file = self.project_root / 'scripts' / '07_final_report.sh'
+        report_file = self.project_root / 'scripts' / 'install' / '07_final_report.sh'
 
         report_block = f'''
 if is_profile_active "{self.service_config['name']}"; then

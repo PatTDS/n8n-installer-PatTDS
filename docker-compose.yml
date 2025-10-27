@@ -225,7 +225,7 @@ services:
       - "7687:7687"
     restart: unless-stopped
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./config/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ./caddy-addon:/etc/caddy/addons:ro
       - caddy-data:/data:rw
       - caddy-config:/config:rw
@@ -458,7 +458,7 @@ services:
     profiles: ["searxng"]
     restart: unless-stopped
     volumes:
-      - ./searxng:/etc/searxng:rw
+      - ./config/searxng:/etc/searxng:rw
     environment:
       - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-localhost}/
       - UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
@@ -522,7 +522,7 @@ services:
     profiles: ["monitoring"]
     restart: unless-stopped
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
     extra_hosts:
       - "host.docker.internal:host-gateway"

@@ -17,8 +17,8 @@ NC='\033[0m' # No Color
 
 # Source utilities if available
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if [ -f "$SCRIPT_DIR/utils.sh" ]; then
-    source "$SCRIPT_DIR/utils.sh"
+if [ -f "$SCRIPT_DIR/../utils.sh" ]; then
+    source "$SCRIPT_DIR/../utils.sh"
 fi
 
 echo -e "${GREEN}========================================${NC}"
