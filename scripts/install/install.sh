@@ -3,7 +3,7 @@
 set -e
 
 # Source the utilities file
-source "$(dirname "$0")/../utils.sh"
+source "$(dirname "$0")/../../utils.sh"
 
 # Check for nested n8n-installer directory
 current_path=$(pwd)

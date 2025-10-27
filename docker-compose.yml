@@ -139,8 +139,8 @@ services:
     entrypoint: /bin/sh
     command: /scripts/n8n_import_script.sh
     volumes:
-      - ./n8n/backup:/backup
-      - ./n8n/n8n_import_script.sh:/scripts/n8n_import_script.sh:ro
+      - ./config/n8n/backup:/backup
+      - ./config/n8n/n8n_import_script.sh:/scripts/n8n_import_script.sh:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -152,7 +152,7 @@ services:
     restart: unless-stopped
     volumes:
       - n8n_storage:/home/node/.n8n
-      - ./n8n/backup:/backup
+      - ./config/n8n/backup:/backup
       - ./shared:/data/shared
     depends_on:
       postgres:
@@ -226,7 +226,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./config/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./caddy-addon:/etc/caddy/addons:ro
+      - ./config/caddy/addons:/etc/caddy/addons:ro
       - caddy-data:/data:rw
       - caddy-config:/config:rw
     environment:
@@ -793,7 +793,7 @@ services:
       python -m paddlex --install serving; \
       exec python -m paddlex --serve --pipeline '/app/ocr_config.yml' --device cpu --port 8080"
     volumes:
-      - ./paddlex/ocr_config.yml:/app/ocr_config.yml:ro
+      - ./config/paddlex/ocr_config.yml:/app/ocr_config.yml:ro
       - paddleocr_cache:/root/.paddleocr
       - paddle_cache:/root/.cache/paddle
       - paddlex_data:/root/.paddlex

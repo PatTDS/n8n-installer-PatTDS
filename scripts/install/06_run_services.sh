@@ -3,7 +3,7 @@
 set -e
 
 # Source the utilities file
-source "$(dirname "$0")/../utils.sh"
+source "$(dirname "$0")/../../utils.sh"
 
 # 1. Check for .env file
 if [ ! -f ".env" ]; then

@@ -3,7 +3,7 @@
 set -e
 
 # Source the utilities file
-source "$(dirname "$0")/../utils.sh"
+source "$(dirname "$0")/../../utils.sh"
 
 # Get the directory where the script resides
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
