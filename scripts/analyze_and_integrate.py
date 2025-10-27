@@ -223,8 +223,9 @@ class ServiceIntegrator:
         display_name = input(f"Display name [{default_display}]: ") or default_display
 
         # Description
-        default_desc = self.analysis.get('description', '')
-        description = input(f"Description [{default_desc[:50]}...]: ") or default_desc
+        default_desc = self.analysis.get('description', '') or ''
+        desc_preview = default_desc[:50] if default_desc else 'No description available'
+        description = input(f"Description [{desc_preview}{'...' if len(default_desc) > 50 else ''}]: ") or default_desc
 
         # Port
         default_port = self.analysis.get('ports', [None])[0] or '3000'
@@ -310,10 +311,11 @@ class ServiceIntegrator:
 
         env_example = self.project_root / '.env.example'
 
+        description_line = self.service_config['description'][:100] if self.service_config.get('description') else 'Service configuration'
         config_block = f"""
 ############
 # {self.service_config['display_name']} Configuration
-# {self.service_config['description'][:100]}
+# {description_line}
 ############
 {self.service_config['name'].upper()}_HOSTNAME={self.service_config['hostname']}.yourdomain.com
 {self.service_config['name'].upper()}_APP_SECRET=
