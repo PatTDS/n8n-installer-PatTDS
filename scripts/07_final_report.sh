@@ -83,172 +83,16 @@ if is_profile_active "dify"; then
 fi
 
 if is_profile_active "docmost"; then
-
-if is_profile_active "outline"; then
   echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
-  echo
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
   echo "================================= Docmost ============================="
-
-if is_profile_active "outline"; then
   echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
-  echo
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
   echo "Host: ${DOCMOST_HOSTNAME:-<hostname_not_set>}"
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
   echo "Description: Open-source Notion Alternative"
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
   echo
   echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
-  echo
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
-  echo "First Time Setup:"
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
   echo "  - Visit https://${DOCMOST_HOSTNAME:-<hostname_not_set>}"
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
   echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
-  echo "  - Create your workspace and admin account"
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
   echo "  - Start collaborating with real-time editing"
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
-fi
-fi
-
-if is_profile_active "outline"; then
-  echo
-  echo "================================= Outline ============================"
-  echo
-  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "Description: Team wiki and knowledge base"
-  echo
-  echo "First Time Setup:"
-  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
-  echo "  - Create your workspace and admin account"
-  echo "  - Configure authentication provider (Google, Slack, etc.)"
 fi
 
 if is_profile_active "supabase"; then
@@ -407,6 +251,32 @@ if is_profile_active "waha"; then
   echo "Swagger User:   ${WHATSAPP_SWAGGER_USERNAME:-<not_set_in_env>}"
   echo "Swagger Pass:   ${WHATSAPP_SWAGGER_PASSWORD:-<not_set_in_env>}"
   echo "API key (plain): ${WAHA_API_KEY_PLAIN:-<not_set_in_env>}"
+fi
+
+if is_profile_active "docmost"; then
+  echo
+  echo "================================= Docmost ============================="
+  echo
+  echo "Host: ${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Open-source Notion Alternative"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${DOCMOST_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Start collaborating with real-time editing"
+fi
+
+if is_profile_active "outline"; then
+  echo
+  echo "================================= Outline ============================"
+  echo
+  echo "Host: ${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "Description: Team wiki and knowledge base"
+  echo
+  echo "First Time Setup:"
+  echo "  - Visit https://${OUTLINE_HOSTNAME:-<hostname_not_set>}"
+  echo "  - Create your workspace and admin account"
+  echo "  - Configure authentication provider (Google, Slack, etc.)"
 fi
 
 if is_profile_active "paddleocr"; then
